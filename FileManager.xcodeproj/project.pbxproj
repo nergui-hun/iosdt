@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		81A3C8585F4530A9A597D460 /* Pods_FileManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78F2C5928B9E09165D4CC5F5 /* Pods_FileManager.framework */; };
+		8D48DB8C29784249009E0BA9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D48DB8B29784249009E0BA9 /* LoginViewController.swift */; };
+		8D48DB8E2978474E009E0BA9 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D48DB8D2978474E009E0BA9 /* KeychainService.swift */; };
+		8D48DB9229789D30009E0BA9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D48DB9129789D30009E0BA9 /* SettingsViewController.swift */; };
+		8D48DB942978A4F2009E0BA9 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D48DB932978A4F2009E0BA9 /* LoginCoordinator.swift */; };
+		8D48DB96297EF038009E0BA9 /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D48DB95297EF038009E0BA9 /* LoginInspector.swift */; };
+		8D48DB9829802B1D009E0BA9 /* FilesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D48DB9729802B1D009E0BA9 /* FilesCoordinator.swift */; };
+		8D48DB9A29803012009E0BA9 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D48DB9929803012009E0BA9 /* SettingsCoordinator.swift */; };
+		8D48DB9C29803287009E0BA9 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D48DB9B29803287009E0BA9 /* CoordinatorProtocol.swift */; };
+		8D48DB9E29803BFC009E0BA9 /* SortTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D48DB9D29803BFC009E0BA9 /* SortTableViewCell.swift */; };
+		8D48DBA029804058009E0BA9 /* SizeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D48DB9F29804058009E0BA9 /* SizeTableViewCell.swift */; };
 		8D8A24DA2953C741008B4046 /* FileManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8A24D92953C741008B4046 /* FileManagerService.swift */; };
 		8DF63B7D294AAC01003935A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF63B7C294AAC01003935A4 /* AppDelegate.swift */; };
 		8DF63B7F294AAC01003935A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF63B7E294AAC01003935A4 /* SceneDelegate.swift */; };
@@ -26,6 +36,16 @@
 		5215D85A35999FA32616BF8F /* Pods-FileManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FileManager.release.xcconfig"; path = "Target Support Files/Pods-FileManager/Pods-FileManager.release.xcconfig"; sourceTree = "<group>"; };
 		5C12DD5808F169203AFD3E94 /* Pods-FileManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FileManager.debug.xcconfig"; path = "Target Support Files/Pods-FileManager/Pods-FileManager.debug.xcconfig"; sourceTree = "<group>"; };
 		78F2C5928B9E09165D4CC5F5 /* Pods_FileManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FileManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D48DB8B29784249009E0BA9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8D48DB8D2978474E009E0BA9 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		8D48DB9129789D30009E0BA9 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		8D48DB932978A4F2009E0BA9 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		8D48DB95297EF038009E0BA9 /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
+		8D48DB9729802B1D009E0BA9 /* FilesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesCoordinator.swift; sourceTree = "<group>"; };
+		8D48DB9929803012009E0BA9 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		8D48DB9B29803287009E0BA9 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
+		8D48DB9D29803BFC009E0BA9 /* SortTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortTableViewCell.swift; sourceTree = "<group>"; };
+		8D48DB9F29804058009E0BA9 /* SizeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeTableViewCell.swift; sourceTree = "<group>"; };
 		8D8A24D92953C741008B4046 /* FileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerService.swift; sourceTree = "<group>"; };
 		8DF63B79294AAC01003935A4 /* FileManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DF63B7C294AAC01003935A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +108,13 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		8D48DB8629783FAF009E0BA9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		8DF63B70294AAC01003935A4 = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +137,7 @@
 		8DF63B7B294AAC01003935A4 /* FileManager */ = {
 			isa = PBXGroup;
 			children = (
+				8D48DB8629783FAF009E0BA9 /* View */,
 				8DFA569A296B4B8A00E3E6FD /* Cell */,
 				8DFA5692296B4AC100E3E6FD /* Model */,
 				8DF63B99294AB550003935A4 /* Controller */,
@@ -121,6 +149,8 @@
 				8DF63B8A294AAC02003935A4 /* Info.plist */,
 				8D8A24D92953C741008B4046 /* FileManagerService.swift */,
 				8DFA566B2969040700E3E6FD /* Extensions.swift */,
+				8D48DB8B29784249009E0BA9 /* LoginViewController.swift */,
+				8D48DB8D2978474E009E0BA9 /* KeychainService.swift */,
 			);
 			path = FileManager;
 			sourceTree = "<group>";
@@ -131,9 +161,13 @@
 				8DFA5695296B4ACF00E3E6FD /* Content.swift */,
 				8DFA5691296B4AAB00E3E6FD /* MainCoordinator.swift */,
 				8DF63B91294AB550003935A4 /* NavFactory */,
+				8D48DB932978A4F2009E0BA9 /* LoginCoordinator.swift */,
+				8D48DB95297EF038009E0BA9 /* LoginInspector.swift */,
+				8D48DB9729802B1D009E0BA9 /* FilesCoordinator.swift */,
+				8D48DB9929803012009E0BA9 /* SettingsCoordinator.swift */,
+				8D48DB9B29803287009E0BA9 /* CoordinatorProtocol.swift */,
 			);
 			name = Coordinator;
-			path = ../../Fileman/Fileman/Coordinator;
 			sourceTree = "<group>";
 		};
 		8DF63B91294AB550003935A4 /* NavFactory */ = {
@@ -150,9 +184,9 @@
 			children = (
 				8DFA5689296B4A4400E3E6FD /* ViewController.swift */,
 				8DFA568B296B4A6100E3E6FD /* MainTabBarViewController.swift */,
+				8D48DB9129789D30009E0BA9 /* SettingsViewController.swift */,
 			);
 			name = Controller;
-			path = ../../Fileman/Fileman/Controller;
 			sourceTree = "<group>";
 		};
 		8DFA5672296B478900E3E6FD /* FileManager */ = {
@@ -206,6 +240,8 @@
 			isa = PBXGroup;
 			children = (
 				8DFA5686296B4A0100E3E6FD /* MainTableViewCell.swift */,
+				8D48DB9D29803BFC009E0BA9 /* SortTableViewCell.swift */,
+				8D48DB9F29804058009E0BA9 /* SizeTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -324,16 +360,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D48DBA029804058009E0BA9 /* SizeTableViewCell.swift in Sources */,
 				8DFA5688296B4A2700E3E6FD /* ViewController.swift in Sources */,
 				8DFA568C296B4A6100E3E6FD /* MainTabBarViewController.swift in Sources */,
+				8D48DB942978A4F2009E0BA9 /* LoginCoordinator.swift in Sources */,
 				8DF63B7D294AAC01003935A4 /* AppDelegate.swift in Sources */,
 				8DFA5694296B4AC100E3E6FD /* Content.swift in Sources */,
 				8DFA5690296B4AA300E3E6FD /* MainCoordinator.swift in Sources */,
+				8D48DB8E2978474E009E0BA9 /* KeychainService.swift in Sources */,
+				8D48DB9E29803BFC009E0BA9 /* SortTableViewCell.swift in Sources */,
 				8DF63B7F294AAC01003935A4 /* SceneDelegate.swift in Sources */,
+				8D48DB9829802B1D009E0BA9 /* FilesCoordinator.swift in Sources */,
 				8D8A24DA2953C741008B4046 /* FileManagerService.swift in Sources */,
+				8D48DB9229789D30009E0BA9 /* SettingsViewController.swift in Sources */,
 				8DFA566C2969040700E3E6FD /* Extensions.swift in Sources */,
+				8D48DB9A29803012009E0BA9 /* SettingsCoordinator.swift in Sources */,
 				8DFA5687296B4A0100E3E6FD /* MainTableViewCell.swift in Sources */,
+				8D48DB9C29803287009E0BA9 /* CoordinatorProtocol.swift in Sources */,
+				8D48DB96297EF038009E0BA9 /* LoginInspector.swift in Sources */,
 				8DFA568E296B4A8100E3E6FD /* NavFactory.swift in Sources */,
+				8D48DB8C29784249009E0BA9 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

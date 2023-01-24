@@ -7,9 +7,6 @@
 
 import UIKit
 
-protocol ViewControllerDelegate: AnyObject {
-    func openFolder(url: URL)
-}
 
 final class ViewController: UIViewController {
 
@@ -66,16 +63,16 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        setupNavBar()
         self.tableView.delegate = self
         self.tableView.dataSource = self
         setupView()
+        self.refresh()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupNavBar()
-        dataSource = fetchData()
-        tableView.reloadData()
+        self.refresh()
     }
 
     private func setupNavBar() {
@@ -122,7 +119,14 @@ final class ViewController: UIViewController {
     }
 
     func refresh() {
-        dataSource = fetchData()
+        dataSource = fetchData().sorted(by: { $0.lastPathComponent < $1.lastPathComponent } )
+
+        if UserDefaults.standard.bool(forKey: "A-Z") == true ||
+            UserDefaults.standard.object(forKey: "A-Z") == nil {
+            self.dataSource.sort(by: { $0.lastPathComponent < $1.lastPathComponent })
+        } else {
+            self.dataSource.sort(by: { $0.lastPathComponent < $1.lastPathComponent })
+        }
         self.tableView.reloadData()
     }
 

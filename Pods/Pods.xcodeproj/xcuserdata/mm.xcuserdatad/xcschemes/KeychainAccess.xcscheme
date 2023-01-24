@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D0A182C1CC1104695890C005F1E28C13"
-               BuildableName = "Pods_FileManager.framework"
-               BlueprintName = "Pods-FileManager"
+               BlueprintIdentifier = "615C831BCE925ED486B225B87E44926D"
+               BuildableName = "KeychainAccess.framework"
+               BlueprintName = "KeychainAccess"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

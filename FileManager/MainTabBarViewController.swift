@@ -10,13 +10,25 @@ import UIKit
 
 final class MainTabBarViewController: UITabBarController {
 
-    private let vc = NavFactory(navCon: UINavigationController())
-    //private var navCon = UINavigationController()
+    private let vc = NavFactory(navCon: UINavigationController(), tab: .files)
+    private var settingsVC = NavFactory(navCon: UINavigationController(), tab: .settings)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewControllers = [vc.navCon]
-        vc.navCon.navigationBar.isHidden = false
-        vc.navCon.tabBarController?.tabBar.isHidden = true
+        setControllers()
+        viewControllers = [vc.navCon, settingsVC.navCon]
+    }
+
+    private func setupView() {
+        tabBar.backgroundColor = .systemGray6
+        tabBar.tintColor = .systemBlue
+        tabBar.isTranslucent = false
+    }
+
+    private func setControllers() {
+        viewControllers = [
+            vc.navCon,
+            settingsVC.navCon
+        ]
     }
 }

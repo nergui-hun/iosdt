@@ -10,19 +10,16 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var mainCoordinator: MainCoordinator?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
         guard let scene = (scene as? UIWindowScene) else { return }
+        self.window = UIWindow(windowScene: scene)
 
-        window = UIWindow(frame: scene.coordinateSpace.bounds)
-        window?.windowScene = scene
-        window?.rootViewController = ViewController(url: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!)
-        window?.makeKeyAndVisible()
-        
-        let coordinator = MainCoordinator()
-        self.window?.rootViewController = coordinator.startApplication()
+        self.mainCoordinator = MainCoordinator(window: window)
+        mainCoordinator?.startApplication()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

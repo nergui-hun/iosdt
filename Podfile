@@ -7,5 +7,6 @@ target 'FileManager' do
 
   # Pods for FileManager
     pod 'SnapKit'
+    pod 'KeychainAccess'
 
 end
