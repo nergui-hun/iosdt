@@ -23,6 +23,16 @@ final class MainTableViewCell: UITableViewCell {
         return label
     } ()
 
+    var sizeLabel: UILabel = {
+        let label = UILabel()
+        return label
+    } ()
+
+    let iconImageView: UIImageView = {
+        let imageView = UIImageView()
+        return imageView
+    } ()
+
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .fillProportionally
@@ -53,7 +63,7 @@ final class MainTableViewCell: UITableViewCell {
     private func addSubviews() {
         addSubview(containerView)
         containerView.addSubview(stackView)
-        stackView.addSubview(folderLabel)
+        stackView.addSubview(folderLabel)z
     }
 
     private func setConstraints() {
