@@ -65,6 +65,7 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        print(keychain.getData(key: "password"))
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -132,8 +133,7 @@ final class LoginViewController: UIViewController {
                         if let savedPassword = keychain.getData(key: "password") {
 
                             if self.mode == .changePassword {
-                                keychain.removeData(key: "password")
-                                keychain.saveData(value: password, key: "password")
+                                keychain.changeData(newPassword: password)
                                 self.mode = .normal
                                 self.dismiss(animated: true)
                             }

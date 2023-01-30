@@ -11,7 +11,7 @@ import KeychainAccess
 protocol KeychainServiceProtocol {
     func getData(key: String) -> String?
     func saveData(value: String, key: String)
-    func changeData()
+    func changeData(newPassword: String)
 }
 
 final class KeychainService: KeychainServiceProtocol {
@@ -34,8 +34,9 @@ final class KeychainService: KeychainServiceProtocol {
         }
     }
 
-    func changeData() {
-        print()
+    func changeData(newPassword: String) {
+        removeData(key: "password")
+        saveData(value: newPassword, key: "password")
     }
 
     func removeData(key: String) {

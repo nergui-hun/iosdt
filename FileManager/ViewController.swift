@@ -156,6 +156,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
         let folderUrl = (files?[indexPath.row])!
         let data = FileManager.default.contents(atPath: folderUrl.path())
+        cell.iconImageView.image = UIImage(data: data ?? Data()) ?? UIImage(systemName: "folder")
         cell.folderLabel.text = folderUrl.lastPathComponent
 
         if !folderUrl.isDirectory {
@@ -197,6 +198,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension ViewController {
+
     func fetchData() -> [URL] {
         var files = [URL]()
         let data: [URL] = FileManagerService.shared.contentsOfDirectory(folderURL: self.url)!
@@ -205,15 +207,15 @@ extension ViewController {
         for file in data {
             files.append(file)
         }
-        //why cant we just do this:
-        //return FileManagerService.shared.contentsOfDirectory(folderURL: self.url)!
+
         return files
     }
 }
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        //add it to your directory
+
         if let image = info[.originalImage] as? UIImage {
             guard let data = image.jpegData(compressionQuality: 1.0) else  {
                 print("Error getting data")
