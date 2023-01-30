@@ -126,7 +126,7 @@ final class ViewController: UIViewController {
             UserDefaults.standard.object(forKey: "A-Z") == nil {
             self.files?.sort(by: { $0.lastPathComponent < $1.lastPathComponent })
         } else {
-            self.files?.sort(by: { $0.lastPathComponent < $1.lastPathComponent })
+            self.files?.sort(by: { $1.lastPathComponent < $0.lastPathComponent })
         }
         self.tableView.reloadData()
     }
@@ -155,7 +155,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
 
         let folderUrl = (files?[indexPath.row])!
-        let data = FileManagerService.shared.contentsOfDirectory(folderURL: folderUrl)
+        let data = FileManager.default.contents(atPath: folderUrl.path())
         cell.folderLabel.text = folderUrl.lastPathComponent
 
         if !folderUrl.isDirectory {

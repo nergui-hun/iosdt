@@ -63,7 +63,7 @@ final class MainTableViewCell: UITableViewCell {
     private func addSubviews() {
         addSubview(containerView)
         containerView.addSubview(stackView)
-        stackView.addSubview(folderLabel)z
+        stackView.addSubview(folderLabel)
     }
 
     private func setConstraints() {
