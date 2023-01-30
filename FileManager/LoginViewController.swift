@@ -9,11 +9,16 @@ import Foundation
 import UIKit
 import SnapKit
 
+enum ScreenMode {
+    case normal
+    case changePassword
+}
+
 final class LoginViewController: UIViewController {
     // MARK: - Values
     var delegate: LoginViewControllerDelegate?
+    private var mode: ScreenMode
     private let keychain = KeychainService.shared
-    let vc = ViewController(url: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!)
     
     // MARK: - View Elements
     private let stackView: UIStackView = {
@@ -47,7 +52,8 @@ final class LoginViewController: UIViewController {
     } ()
 
     // MARK: - init
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init(mode: ScreenMode) {
+        self.mode = mode
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -59,6 +65,7 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        print(keychain.getData(key: "password"))
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -114,6 +121,7 @@ final class LoginViewController: UIViewController {
 
     @objc func managePassword(_ sender: UIButton!) {
         if let password = passwordTextField.text {
+
             if password.count < 4 {
                 errorLabel.text = "Пароль должен состоять минимум из четырёх символов"
             } else {
@@ -124,6 +132,12 @@ final class LoginViewController: UIViewController {
                     if password1 == password {
                         if let savedPassword = keychain.getData(key: "password") {
 
+                            if self.mode == .changePassword {
+                                keychain.changeData(newPassword: password)
+                                self.mode = .normal
+                                self.dismiss(animated: true)
+                            }
+
                             //log in
                             if password == savedPassword {
                                 self.delegate?.logIn()
@@ -132,7 +146,7 @@ final class LoginViewController: UIViewController {
                             }
                         } else {
                             keychain.saveData(value: password, key: "password")
-                            self.navigationController?.pushViewController(vc, animated: true)
+                            self.delegate?.logIn()
                         }
 
                     //the 2 passwords don't match

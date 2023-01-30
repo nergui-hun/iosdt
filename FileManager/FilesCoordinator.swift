@@ -38,6 +38,6 @@ protocol ViewControllerDelegate: AnyObject {
 extension FilesCoordinator: ViewControllerDelegate {
 
     func redirectToImageVC(image: UIImage) {
-        //let imageVC: ImageV
+        
     }
 }

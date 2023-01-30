@@ -32,7 +32,7 @@ protocol SettingsViewControllerDelegate: AnyObject {
 
 extension SettingsCoordinator: SettingsViewControllerDelegate {
     func navigateToLoginVC() {
-        let loginVC: LoginViewController = LoginViewController()
+        let loginVC: LoginViewController = LoginViewController(mode: .changePassword)
         self.navCon.present(loginVC, animated: true)
     }
 }

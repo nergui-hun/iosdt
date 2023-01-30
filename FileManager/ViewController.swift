@@ -67,7 +67,8 @@ final class ViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         setupView()
-        self.refresh()
+
+        self.files = FileManagerService.shared.contentsOfDirectory(folderURL: self.url)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -115,17 +116,17 @@ final class ViewController: UIViewController {
         DispatchQueue.main.async {
             self.present(imagePickerController, animated: true, completion: nil)
         }
-        self.tableView.reloadData()
+        self.refresh()
     }
 
     func refresh() {
-        dataSource = fetchData().sorted(by: { $0.lastPathComponent < $1.lastPathComponent } )
+        self.files = FileManagerService.shared.contentsOfDirectory(folderURL: self.url)
 
         if UserDefaults.standard.bool(forKey: "A-Z") == true ||
             UserDefaults.standard.object(forKey: "A-Z") == nil {
-            self.dataSource.sort(by: { $0.lastPathComponent < $1.lastPathComponent })
+            self.files?.sort(by: { $0.lastPathComponent < $1.lastPathComponent })
         } else {
-            self.dataSource.sort(by: { $0.lastPathComponent < $1.lastPathComponent })
+            self.files?.sort(by: { $1.lastPathComponent < $0.lastPathComponent })
         }
         self.tableView.reloadData()
     }
@@ -143,7 +144,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return self.dataSource.count
+        return files?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -153,21 +154,41 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
 
-        cell.folderLabel.text = dataSource[indexPath.row].lastPathComponent
-        if dataSource[indexPath.row].isDirectory {
+        let folderUrl = (files?[indexPath.row])!
+        let data = FileManager.default.contents(atPath: folderUrl.path())
+        cell.iconImageView.image = UIImage(data: data ?? Data()) ?? UIImage(systemName: "folder")
+        cell.folderLabel.text = folderUrl.lastPathComponent
+
+        if !folderUrl.isDirectory {
+            cell.accessoryType = .none
+            if UserDefaults.standard.bool(forKey: "Show size") == true ||
+                UserDefaults.standard.object(forKey: "Show size") == nil {
+                let imageSize = (Double(data?.count ?? 0) / 1024 / 1024)
+                cell.sizeLabel.text = String(format: "%.2f Mb", imageSize)
+                cell.sizeLabel.isHidden = false
+            } else {
+                cell.sizeLabel.isHidden = true
+            }
+        } else {
             cell.accessoryType = .disclosureIndicator
+            cell.sizeLabel.isHidden = true
         }
+
+        cell.selectionStyle = .none
         return cell
     }
 
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let folderUrl = dataSource[indexPath.row]
+        let folderUrl = (files?[indexPath.row])!
         if folderUrl.isDirectory {
-            let vc: ViewController = ViewController(url: folderUrl)
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.delegate?.openFolder(url: url, title: folderUrl.lastPathComponent)
+        } else {
+            let data = FileManager.default.contents(atPath: folderUrl.path())
+            let image = UIImage(data: data ?? Data()) ?? UIImage(systemName: "zurg.fill")
+            self.delegate?.redirectToImageVC(image: image!)
         }
-        tableView.deselectRow(at: indexPath, animated: true)
+        //tableView.deselectRow(at: indexPath, animated: true)
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -177,6 +198,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension ViewController {
+
     func fetchData() -> [URL] {
         var files = [URL]()
         let data: [URL] = FileManagerService.shared.contentsOfDirectory(folderURL: self.url)!
@@ -185,15 +207,15 @@ extension ViewController {
         for file in data {
             files.append(file)
         }
-        //why cant we just do this:
-        //return FileManagerService.shared.contentsOfDirectory(folderURL: self.url)!
+
         return files
     }
 }
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        //add it to your directory
+
         if let image = info[.originalImage] as? UIImage {
             guard let data = image.jpegData(compressionQuality: 1.0) else  {
                 print("Error getting data")

@@ -23,17 +23,22 @@ final class MainTableViewCell: UITableViewCell {
         return label
     } ()
 
+    var sizeLabel: UILabel = {
+        let label = UILabel()
+        return label
+    } ()
+
+    let iconImageView: UIImageView = {
+        let imageView = UIImageView()
+        return imageView
+    } ()
+
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .fillProportionally
         stackView.axis = .horizontal
         stackView.spacing = 16
         return stackView
-    } ()
-
-    private let containerView: UIView = {
-        let containerView = UIView()
-        return containerView
     } ()
 
     // MARK: - init
@@ -51,24 +56,33 @@ final class MainTableViewCell: UITableViewCell {
     // MARK: - Methods
 
     private func addSubviews() {
-        addSubview(containerView)
-        containerView.addSubview(stackView)
+        addSubview(stackView)
+        stackView.addSubview(iconImageView)
         stackView.addSubview(folderLabel)
+        stackView.addSubview(sizeLabel)
     }
 
     private func setConstraints() {
-        containerView.snp.makeConstraints { make in
-            make.top.right.left.equalToSuperview()
+        stackView.snp.makeConstraints{ make in
+            make.top.equalToSuperview()
+            make.right.left.equalToSuperview().inset(16)
             make.height.equalTo(50)
         }
 
-        stackView.snp.makeConstraints{ make in
-            make.top.height.equalToSuperview()
-            make.right.left.equalToSuperview().inset(16)
+        folderLabel.snp.makeConstraints { make in
+            make.center.height.equalToSuperview()
+            make.width.equalToSuperview().inset(70)
         }
 
-        folderLabel.snp.makeConstraints { make in
-            make.center.height.width.equalToSuperview()
+        iconImageView.snp.makeConstraints { make in
+            make.centerY.left.equalToSuperview()
+            make.height.width.equalTo(40)
+        }
+
+        sizeLabel.snp.makeConstraints { make in
+            make.centerY.right.equalToSuperview()
+            make.height.equalTo(40)
+            make.width.equalTo(65)
         }
     }
 

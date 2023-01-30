@@ -27,11 +27,9 @@ final class LoginCoordinator: CoordinatorProtocol {
     }
 
     func openLoginVC() {
-      //  if keychain.allKeys().isEmpty {
-            let loginVC: LoginViewController = LoginViewController()
+        let loginVC: LoginViewController = LoginViewController(mode: .normal)
             loginVC.delegate = self
             self.navCon.pushViewController(loginVC, animated: true)
-     //   }
     }
 
     func setTabBarController() -> UITabBarController {
